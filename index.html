@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Jyoti 🐸</title>
+
+<!-- Funny rounded font -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #030307;
+    font-family: "Baloo 2", cursive;
+    color: white;
+}
+
+/* =========================
+   DARK ANIMATED BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center,
+        #1c1730 0%,
+        #090914 40%,
+        #020205 100%);
+}
+
+/* Moving glowing blobs */
+
+.glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .25;
+}
+
+.glow1 {
+    background: #7c3aed;
+    left: -120px;
+    top: -100px;
+    animation: move1 10s infinite alternate ease-in-out;
+}
+
+.glow2 {
+    background: #ec4899;
+    right: -120px;
+    bottom: -100px;
+    animation: move2 12s infinite alternate ease-in-out;
+}
+
+.glow3 {
+    background: #2563eb;
+    left: 40%;
+    top: 45%;
+    animation: move3 9s infinite alternate ease-in-out;
+}
+
+@keyframes move1 {
+    to {
+        transform: translate(160px,120px) scale(1.3);
+    }
+}
+
+@keyframes move2 {
+    to {
+        transform: translate(-140px,-100px) scale(1.2);
+    }
+}
+
+@keyframes move3 {
+    to {
+        transform: translate(-100px,80px) scale(.8);
+    }
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: .5;
+    animation: float linear infinite;
+}
+
+@keyframes float {
+
+    from {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .7;
+    }
+
+    80% {
+        opacity: .5;
+    }
+
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+/* =========================
+   CLICK TEXT
+========================= */
+
+.instruction {
+    position: absolute;
+    top: 19%;
+
+    font-size: 17px;
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.85);
+
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        opacity: .4;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-6px);
+    }
+}
+
+/* =========================
+   GIFT
+========================= */
+
+.gift-wrapper {
+    position: relative;
+    width: 220px;
+    height: 220px;
+
+    cursor: pointer;
+
+    transition:
+        opacity .7s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+/* When opened, gift disappears */
+
+.gift-wrapper.open {
+    pointer-events: none;
+    transform: scale(.7) translateY(30px);
+    opacity: 0;
+}
+
+/* =========================
+   GIFT BODY
+========================= */
+
+.gift {
+    position: absolute;
+
+    width: 160px;
+    height: 130px;
+
+    left: 30px;
+    top: 65px;
+}
+
+.gift-body {
+    position: absolute;
+
+    width: 160px;
+    height: 110px;
+
+    bottom: 0;
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #991b1b,
+            #ef4444,
+            #b91c1c
+        );
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.6),
+        inset 0 2px 5px rgba(255,255,255,.2);
+}
+
+/* Vertical ribbon */
+
+.gift-body::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 67px;
+
+    width: 27px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #eab308,
+            #fde68a,
+            #eab308
+        );
+}
+
+/* =========================
+   LID
+========================= */
+
+.lid {
+
+    position: absolute;
+
+    width: 180px;
+    height: 35px;
+
+    left: -10px;
+    top: 0;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b91c1c,
+            #f87171,
+            #991b1b
+        );
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.5);
+
+    z-index: 5;
+
+    transform-origin: left bottom;
+
+    transition:
+        transform 1s cubic-bezier(.2,.9,.2,1);
+}
+
+/* Lid ribbon */
+
+.lid::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 76px;
+
+    width: 27px;
+    height: 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #eab308,
+            #fde68a,
+            #eab308
+        );
+}
+
+/* =========================
+   BOW
+========================= */
+
+.bow {
+
+    position: absolute;
+
+    top: -35px;
+    left: 60px;
+
+    width: 60px;
+    height: 40px;
+
+    z-index: 10;
+
+    transition: transform 1s ease;
+}
+
+.bow-left,
+.bow-right {
+
+    position: absolute;
+
+    width: 35px;
+    height: 28px;
+
+    background: #facc15;
+
+    border-radius: 70% 20% 70% 20%;
+}
+
+.bow-left {
+
+    left: 0;
+    transform: rotate(-25deg);
+}
+
+.bow-right {
+
+    right: 0;
+    transform: rotate(25deg) scaleX(-1);
+}
+
+.bow-center {
+
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    background: #eab308;
+
+    border-radius: 50%;
+
+    left: 22px;
+    top: 7px;
+}
+
+/* =========================
+   OPEN ANIMATION
+========================= */
+
+.gift-wrapper.open .lid {
+
+    transform:
+        rotate(-35deg)
+        translate(-5px,-35px);
+}
+
+.gift-wrapper.open .bow {
+
+    transform:
+        translateY(-50px)
+        rotate(-15deg);
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.03);
+
+    opacity: 0;
+
+    white-space: nowrap;
+
+    font-family: "Baloo 2", cursive;
+
+    font-size: clamp(40px,9vw,85px);
+
+    font-weight: 800;
+
+    color: white;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.4),
+        0 0 30px rgba(168,85,247,.6),
+        0 0 60px rgba(236,72,153,.3);
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+/*
+   Tiny → normal size
+*/
+
+.message.show {
+
+    animation:
+        messageAppear 2.5s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+}
+
+@keyframes messageAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.03);
+    }
+
+    25% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.15);
+    }
+
+    55% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.55);
+    }
+
+    80% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.08);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+}
+
+/* =========================
+   FUNNY EMOJIS
+========================= */
+
+.funny {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    font-size: 45px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.funny.show {
+    animation: funnyPop 2s ease-out forwards;
+}
+
+.funny1 {
+    margin-left: -130px;
+    margin-top: -80px;
+}
+
+.funny2 {
+    margin-left: 100px;
+    margin-top: -100px;
+}
+
+.funny3 {
+    margin-left: -150px;
+    margin-top: 80px;
+}
+
+.funny4 {
+    margin-left: 110px;
+    margin-top: 70px;
+}
+
+@keyframes funnyPop {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0)
+            rotate(0deg);
+    }
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.3)
+            rotate(20deg);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-100px)
+            scale(.8)
+            rotate(40deg);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .instruction {
+        font-size: 13px;
+        letter-spacing: 3px;
+        top: 18%;
+    }
+
+    .message {
+        font-size: 42px;
+    }
+
+    .funny {
+        font-size: 35px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="background">
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
+
+</div>
+
+
+<!-- PARTICLES -->
+
+<div id="particles"></div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <div class="instruction">
+        CLICK HERE PLEASE
+    </div>
+
+
+    <!-- GIFT -->
+
+    <div class="gift-wrapper" id="gift">
+
+        <div class="gift">
+
+            <div class="bow">
+
+                <div class="bow-left"></div>
+
+                <div class="bow-right"></div>
+
+                <div class="bow-center"></div>
+
+            </div>
+
+
+            <div class="lid"></div>
+
+            <div class="gift-body"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div class="message" id="message">
+        JYOTI PAGOL 🐸
+    </div>
+
+
+    <!-- FUNNY EMOJIS -->
+
+    <div class="funny funny1">🐸</div>
+
+    <div class="funny funny2">😂</div>
+
+    <div class="funny funny3">🤡</div>
+
+    <div class="funny funny4">🐸</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   CREATE PARTICLES
+========================= */
+
+const particleContainer =
+    document.getElementById("particles");
+
+for(let i = 0; i < 45; i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (7 + Math.random() * 12) + "s";
+
+    particle.style.animationDelay =
+        (-Math.random() * 15) + "s";
+
+    const size =
+        1 + Math.random() * 3;
+
+    particle.style.width =
+        size + "px";
+
+    particle.style.height =
+        size + "px";
+
+    particleContainer.appendChild(particle);
+}
+
+
+/* =========================
+   GIFT CLICK
+========================= */
+
+const gift =
+    document.getElementById("gift");
+
+const message =
+    document.getElementById("message");
+
+const funny =
+    document.querySelectorAll(".funny");
+
+
+gift.addEventListener("click", () => {
+
+    if(gift.classList.contains("open"))
+        return;
+
+    /* Open the gift */
+
+    gift.classList.add("open");
+
+
+    /*
+       Wait for lid animation,
+       then show message
+    */
+
+    setTimeout(() => {
+
+        message.classList.add("show");
+
+        funny.forEach(item => {
+            item.classList.add("show");
+        });
+
+    }, 850);
+
+});
+
+</script>
+
+</body>
+  </html>
